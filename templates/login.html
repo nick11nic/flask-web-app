@@ -12,12 +12,20 @@
       </div>
       <div class="login-input">
         <p>Your password:</p>
-        <input type="password" required name="password" placeholder="e.g jhonpswd1234">
+        <input type="password" required name="password" placeholder="e.g jhon1234">
       </div>
 
-      <input type="submit" class="login-submit">
+      <input type="submit" class="login-submit" value="Login">
     </form>
   </div>
+  {% if error %}
+    <div class="login-error-container">
+        <p>{{error}}</p>
+    </div>
+  {%else%}
+      <div>
+      </div>
+  {% endif %}
 </div>
 {%endblock%}
 
