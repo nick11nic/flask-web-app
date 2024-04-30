@@ -1,0 +1,23 @@
+{%extends "base.html"%}
+{%block title%} Login Page{%endblock%}
+{%block content%}
+<div class="login-main">
+  <h1>Welcome!</h1>
+  <div class="login-container">
+    <form method="post" class="login-form">
+
+      <div class="login-input">
+        <p>Your email:</p>
+        <input type="text" name="user" required placeholder="e.g john@gmail.com">
+      </div>
+      <div class="login-input">
+        <p>Your password:</p>
+        <input type="password" required name="password" placeholder="e.g jhonpswd1234">
+      </div>
+
+      <input type="submit" class="login-submit">
+    </form>
+  </div>
+</div>
+{%endblock%}
+

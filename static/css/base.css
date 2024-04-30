@@ -1,6 +1,7 @@
 :root {
   --gray: #1f2937;
   --light-gray: #e2e8f0;
+  --medium-gray: #374151;
 
   font-family: "Roboto", sans-serif;
 }
@@ -38,21 +39,21 @@ header {
   display: flex;
   align-items: center;
   padding: 0px 10px;
-  gap: 25px;
   color: white;
 }
 
 .base-menu-option {
+  color: white;
+  text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 5px;
   cursor: default;
+  padding: 0px 10px;
   transition: 150ms;
 }
 
 .base-menu-option:hover {
-  transform: scale(1.1);
-  transition: 150ms;
+  background-color: var(--medium-gray);
 }
 
 .base-login {
@@ -62,7 +63,6 @@ header {
   cursor: default;
   align-items: center;
   color: white;
-  padding: 0 15px;
 }
 
 .logo {
