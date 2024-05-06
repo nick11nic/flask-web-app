@@ -5,7 +5,7 @@ from blueprints import login, home, actuator, sensor, logout
 def main():
 
     app = Flask(__name__)
-    app.secret_key = "thisisasecretkey"
+    app.secret_key = "ndisanpsaiviwb2983123"
 
     app.register_blueprint(login.login, url_prefix="")
     app.register_blueprint(home.home, url_prefix="")
