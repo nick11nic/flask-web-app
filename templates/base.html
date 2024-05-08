@@ -24,6 +24,12 @@
             <img src="{{url_for('static', filename='img/actuator.svg')}}">
             <p>Actuators</p>
         </a>
+        {% if session.get('username') == 'admin' %}
+        <a href="/user" class="base-menu-option">
+            <img src="{{url_for('static', filename='img/user.svg')}}">
+            <p>Users</p>
+        </a>
+        {% endif %}
       </div>
       <div class='base-login'>
           {% if session.get('user')%}
