@@ -110,4 +110,26 @@
   border-radius: 10px;
   border: 2px solid var(--medium-gray);
   box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-sensor-container {
+  width: 400px;
+  display: flex;
+  gap: 5px;
+}
+
+.first-element {
+  border-bottom: 1px solid var(--gray);
+}
+
+.home-sensor-container p {
+  font-size: 25px;
+  color: var(--medium-gray);
+}
+.home-sensor-container img {
+  width: 30px;
 }

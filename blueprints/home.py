@@ -32,4 +32,18 @@ def home_blueprint():
     if "user" not in session:
         return redirect("/login")
 
-    return render_template("home.html", messages=messages)
+    temperature = None
+    for message in reversed(messages):
+        if "Temperature" in message:
+            temperature = message
+            break
+
+    humidity = None
+    for message in reversed(messages):
+        if "Humidity" in message:
+            humidity = message
+            break
+
+    return render_template(
+        "home.html", messages=messages, temperature=temperature, humidity=humidity
+    )

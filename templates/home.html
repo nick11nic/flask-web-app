@@ -15,7 +15,22 @@ Home Page
     </div>
     <h1>Sensors</h1>
     <div class="home-sensors">
-      
+      <div class="home-sensor-container first-element">
+          <img src="{{url_for('static', filename='img/temperature.svg')}}">
+          {% if temperature %}
+            <p>{{temperature}}</p>
+          {%else%}
+            <p>Temperature: Not found.</p>
+          {% endif %}
+      </div>     
+      <div class="home-sensor-container">
+          <img src="{{url_for('static', filename='img/humidity.svg')}}">
+          {% if humidity%}
+            <p>{{humidity}}</p>
+          {%else%}
+          <p>Humidity: Not found. </p>
+          {% endif %}
+      </div>     
     </div>
   </div>
   <div class="content-container">
