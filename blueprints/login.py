@@ -4,7 +4,7 @@ login = Blueprint(
     "login", __name__, static_folder="static", template_folder="templates"
 )
 
-users = {"user@gmail.com": "123", "admin@gmail.com": "123"}
+users = {"user@gmail.com": "123", "adm@gmail.com": "123"}
 
 
 @login.route("/login", methods=["GET", "POST"])
