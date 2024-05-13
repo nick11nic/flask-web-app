@@ -1,8 +1,11 @@
-from flask import Blueprint, render_template, session, redirect, request
+from flask import Blueprint, render_template, session, redirect, request, flash
 
 user = Blueprint("user", __name__, static_folder="static", template_folder="templates")
 
-users = []
+users = [
+    {"id": 1, "email": "user@gmail.com", "password": "123"},
+    {"id": 2, "email": "adm@gmail.com", "password": "123"}
+]
 
 @user.route("/user")
 def user_blueprint():
@@ -27,11 +30,19 @@ def edit_user():
     new_email = request.form.get("new_email")
     new_password = request.form.get("new_password")
 
+    user_found = False
     for user in users:
         if user["id"] == user_id:
-            user["email"] = new_email
-            user["password"] = new_password
+            user_found = True
+            if new_email:
+                user["email"] = new_email
+            if new_password:
+                user["password"] = new_password
             break
+        
+    if not user_found:
+        flash("User not found.")
+        return redirect("/user")
 
     return redirect("/user")
 
