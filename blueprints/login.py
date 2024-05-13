@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, session
+from flask import Blueprint, render_template, request, redirect, session, flash
 from blueprints.user import users
 
 login = Blueprint(
@@ -10,13 +10,14 @@ def login_blueprint():
     if request.method == "GET":
         return render_template("login.html")
 
-    user = request.form["user"]
+    email = request.form["user"]
     password = request.form["password"]
 
-    if user in users and users[user] == password:
-        session.clear()
-        session["user"] = user
-        session["username"] = user[0 : user.index("@")]
-        return redirect("/home")
+    for user in users:
+        if user["email"] == email and user["password"] == password:
+            session.clear()
+            session["user"] = email
+            session["username"] = email[0 : email.index("@")]
+            return redirect("/home")
 
     return render_template("login.html", error="Error: Invalid credentials.")
