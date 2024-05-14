@@ -25,15 +25,15 @@ Actuator Page
         <div class="actuator-view-container">
             <table class="actuator-table">
                 <tr>
-                    <th class="actuator-table-header">Name</th>
+                    <th class="actuator-table-header left">Name</th>
                     <th class="actuator-table-header">Value</th>
                     <th class="actuator-table-header">Action</th>
                 </tr>
                 {% for actuator in actuators %}
                 <tr>
-                    <td class="actuator-table-data">{{ actuator.name }}</td>
+                    <td class="actuator-table-data" class="left">{{ actuator.name }}</td>
                     <td class="actuator-table-data">{{ actuator.value }}</td>
-                    <td>
+                    <td class="actuator-table-data">
                         {% if session.get('username') == "adm" %}
                         <form action="/delete_actuator/{{actuator.id}}" method="POST">
                             <button type="submit" class="actuator-delete-button">Delete</button>

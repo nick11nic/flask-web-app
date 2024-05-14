@@ -25,15 +25,15 @@ Sensor Page
         <div class="sensor-view-container">
             <table class="sensor-table">
                 <tr>
-                    <th class="sensor-table-header">Name</th>
+                    <th class="sensor-table-header left">Name</th>
                     <th class="sensor-table-header">Value</th>
                     <th class="sensor-table-header">Action</th>
                 </tr>
                 {% for sensor in sensors %}
                 <tr>
-                    <td class="sensor-table-data">{{ sensor.name }}</td>
+                    <td class="sensor-table-data left">{{ sensor.name }}</td>
                     <td class="sensor-table-data">{{ sensor.value }}</td>
-                    <td>
+                    <td class="sensor-table-data">
                         {% if session.get('username') == "adm" %}
                         <form action="/delete_sensor/{{sensor.id}}" method="POST">
                             <button type="submit" class="sensor-delete-button">Delete</button>

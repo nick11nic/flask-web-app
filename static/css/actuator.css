@@ -12,6 +12,10 @@ h2{
     color: var(--medium-gray);
 }
 
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
 
 
 .main{
@@ -81,16 +85,13 @@ h2{
     padding: 3rem;
 }
 
-.actuator-table{
-    width: 100%;
-}
-
 .actuator-table-header{
     justify-content: space-between;
     background-color: var(--gray);
     color: white;
     width: 100%;
     padding: 0.5rem;
+    text-align: left;
 }
 
 .actuator-table-data{
@@ -99,8 +100,8 @@ h2{
     text-align: left;
 }
 
-.actuator-table-data:nth-child(even){
-    background-color: var(--light-gray);
+.left{
+    text-align: left;
 }
 
 .actuator-table-data:nth-child(odd){
