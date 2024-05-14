@@ -5,40 +5,45 @@ Actuator Page
 {% endblock %}
 
 {% block content%}
-<h1>Actuator Register</h1>
-
-{% if session.get('username') == "adm" %}
-<h2>New Actuator</h2>
-<form action="/create_actuator" method="post">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required><br>
-
-    <label for="value">Value:</label>
-    <input type="number" id="value" name="value" required><br>
+<div class="main">
+    {% if session.get('username') == "adm" %}
+    <div class="container">
+        <h2 class="actuator-subtitle">New Actuator</h2>
+        <form action="/create_actuator" method="post" class="actuator-create-container">
+            <label for="name" class="actuator-label">Name:</label>
+            <input type="text" id="name" name="name" placeholder="e.g temperature" required class="actuator-input"><br>
     
-    <button type="submit">Register</button>
-</form>
-{% endif %}
-
-<h2>Registered Actuators</h2>
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Value</th>
-    </tr>
-    {% for actuator in actuators %}
-    <tr>
-        <td>{{ actuator.name }}</td>
-        <td>{{ actuator.value }}</td>
-        <td>
-            {% if session.get('username') == "adm" %}
-            <form action="/delete_actuator/{{actuator.id}}" method="POST">
-                <button type="submit">Delete</button>
-            </form>
-            {% endif %}
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+            <label for="value" class="actuator-label">Value:</label>
+            <input type="number" id="value" name="value" placeholder="25" required class="actuator-input"><br>
+            
+            <button type="submit" class="actuator-button">Register</button>
+        </form>
+    </div>
+    {% endif %}
+    <div class="container">
+        <h2 class="actuator-subtitle">Registered Actuators</h2>
+        <div class="actuator-view-container">
+            <table class="actuator-table">
+                <tr>
+                    <th class="actuator-table-header">Name</th>
+                    <th class="actuator-table-header">Value</th>
+                </tr>
+                {% for actuator in actuators %}
+                <tr>
+                    <td class="actuator-table-data">{{ actuator.name }}</td>
+                    <td class="actuator-table-data">{{ actuator.value }}</td>
+                    <td>
+                        {% if session.get('username') == "adm" %}
+                        <form action="/delete_actuator/{{actuator.id}}" method="POST">
+                            <button type="submit" class="actuator-delete-button">Delete</button>
+                        </form>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
