@@ -127,7 +127,9 @@
 .home-sensor-container {
   width: 25rem;
   display: flex;
-  gap: 0.3125rem;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .first-element {
@@ -135,9 +137,9 @@
 }
 
 .home-sensor-container p {
-  font-size: 1.5625rem;
+  font-size: 1.5rem;
   color: var(--medium-gray);
 }
 .home-sensor-container img {
-  width: 0.9375rem;
+  width: 1.7rem;
 }

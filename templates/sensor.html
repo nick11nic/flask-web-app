@@ -5,40 +5,45 @@ Sensor Page
 {% endblock %}
 
 {% block content%}
-<h1>Sensor Register</h1>
-
-{% if session.get('username') == "adm" %}
-<h2>New Sensor</h2>
-<form action="/create_sensor" method="post">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required><br>
-
-    <label for="value">Value:</label>
-    <input type="number" id="value" name="value" required><br>
+<div class="main">
+    <div class="container">
+        <h2 class="sensor-subtitle">New Sensor</h2>
+        {% if session.get('username') == "adm" %}
+        <form action="/create_sensor" method="post" class="sensor-create-container">
+            <label for="name" class="sensor-label">Name:</label>
+            <input type="text" id="name" name="name" placeholder="e.g temperature" required class="sensor-input"><br>
     
-    <button type="submit">Register</button>
-</form>
-{% endif %}
-
-<h2>Registered Sensors</h2>
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Value</th>
-    </tr>
-    {% for sensor in sensors %}
-    <tr>
-        <td>{{ sensor.name }}</td>
-        <td>{{ sensor.value }}</td>
-        <td>
-            {% if session.get('username') == "adm" %}
-            <form action="/delete_sensor/{{sensor.id}}" method="POST">
-                <button type="submit">Delete</button>
-            </form>
-            {% endif %}
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+            <label for="value" class="sensor-label">Value:</label>
+            <input type="number" id="value" name="value" placeholder="25" required class="sensor-input"><br>
+            
+            <button type="submit" class="sensor-button">Register</button>
+        </form>
+        {% endif %}
+    </div>
+    <div class="container">
+        <h2 class="sensor-subtitle">Registered Sensors</h2>
+        <div class="sensor-view-container">
+            <table class="sensor-table">
+                <tr>
+                    <th class="sensor-table-header">Name</th>
+                    <th class="sensor-table-header">Value</th>
+                </tr>
+                {% for sensor in sensors %}
+                <tr>
+                    <td class="sensor-table-data">{{ sensor.name }}</td>
+                    <td class="sensor-table-data">{{ sensor.value }}</td>
+                    <td>
+                        {% if session.get('username') == "adm" %}
+                        <form action="/delete_sensor/{{sensor.id}}" method="POST">
+                            <button type="submit" class="sensor-delete-button">Delete</button>
+                        </form>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock %}
 

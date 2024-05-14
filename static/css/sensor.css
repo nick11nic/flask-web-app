@@ -1,0 +1,146 @@
+:root {
+    --gray: #1f2937;
+    --light-gray: #e2e8f0;
+    --medium-gray: #374151;
+  
+    font-family: "Roboto", sans-serif;
+}
+
+h2{
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--medium-gray);
+}
+
+
+
+.main{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 35%;
+    height: 35%;
+    gap: 1rem;
+}
+
+.sensor-create-container,
+.sensor-view-container{
+    display: flex;
+    width: 100%;
+    min-height: 100%;
+    padding: 3rem;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 1rem;
+    border: 0.1rem solid var(--medium-gray);
+}
+
+.sensor-create-container{
+    justify-content: center;
+    gap: 0.2rem;
+}
+
+.sensor-label, .sensor-input{
+    width: 70%;
+}
+
+.sensor-input{
+    padding: 0.7rem;
+    border: 0.1rem solid var(--medium-gray);
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.sensor-button{
+    padding: 1rem;
+    width: 50%;
+    background-color: var(--gray);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+}
+.sensor-button:hover{
+    background-color: var(--medium-gray);
+    cursor: pointer;
+}
+
+.sensor-view-container{
+    justify-content: top;
+    overflow: auto;
+    padding: 3rem;
+}
+
+.sensor-table{
+    width: 100%;
+}
+
+.sensor-table-header{
+    justify-content: space-between;
+    background-color: var(--gray);
+    color: white;
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.sensor-table-data{
+    padding: 0.5rem;
+    border-bottom: 0.1rem solid var(--medium-gray);
+    text-align: left;
+}
+
+.sensor-table-data:nth-child(even){
+    background-color: var(--light-gray);
+}
+
+.sensor-table-data:nth-child(odd){
+    background-color: white;
+}
+
+.sensor-table-data:last-child{
+    border-bottom: none;
+}
+
+.sensor-delete-button{
+    background-color: var(--gray);
+    color: white;
+    border: none;
+    padding: 0.7rem;
+    border-radius: 0.5rem;
+}
+
+.sensor-delete-button:hover{
+    background-color: var(--medium-gray);
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    width: 12px; 
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--light-gray);
+    border-radius: 10px; 
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--gray);
+    border-radius: 10px; 
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--medium-gray);
+  }
+  
+  
