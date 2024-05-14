@@ -6,9 +6,9 @@ Sensor Page
 
 {% block content%}
 <div class="main">
+    {% if session.get('username') == "adm" %}
     <div class="container">
         <h2 class="sensor-subtitle">New Sensor</h2>
-        {% if session.get('username') == "adm" %}
         <form action="/create_sensor" method="post" class="sensor-create-container">
             <label for="name" class="sensor-label">Name:</label>
             <input type="text" id="name" name="name" placeholder="e.g temperature" required class="sensor-input"><br>
@@ -18,8 +18,8 @@ Sensor Page
             
             <button type="submit" class="sensor-button">Register</button>
         </form>
-        {% endif %}
     </div>
+    {% endif %}
     <div class="container">
         <h2 class="sensor-subtitle">Registered Sensors</h2>
         <div class="sensor-view-container">
