@@ -78,6 +78,7 @@ h2{
 .sensor-view-container{
     justify-content: top;
     overflow: auto;
+    height: 100%;
     padding: 3rem;
 }
 
