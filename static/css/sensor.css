@@ -92,16 +92,13 @@ h2{
     color: white;
     width: 100%;
     padding: 0.5rem;
+    text-align: center;
 }
 
 .sensor-table-data{
     padding: 0.5rem;
     border-bottom: 0.1rem solid var(--medium-gray);
-    text-align: left;
-}
-
-.sensor-table-data:nth-child(even){
-    background-color: var(--light-gray);
+    text-align: center;
 }
 
 .sensor-table-data:nth-child(odd){

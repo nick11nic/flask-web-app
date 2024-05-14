@@ -123,6 +123,13 @@ main{
     gap: 1rem;
 }
 
+.input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+}
+
 .view-user-container{
     display: flex;
     flex-direction: column;
