@@ -21,6 +21,13 @@
       <input type="submit" class="login-submit" value="Login">
     </form>
   </div>
+  {% with message = get_flashed_messages() %}
+    {% if message %}
+        {% for message in message %}
+            <span class="alert alert-error">{{ message }}</span>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
   {% if error %}
     <div class="login-error-container">
         <p>{{error}}</p>

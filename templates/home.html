@@ -5,32 +5,36 @@ Home Page
 {% block content%}
 <div class="home-container">
   <div class="content-container">
-    <h1>Send</h1>
-    <div class="home-send">
-      <form method="POST" class="home-form">
-        <p>Input your command:</p>
-        <input class="home-input" type="text" name="command" placeholder=" e.g turn on light">
-        <input type="submit" class="home-button">
-      </form>
+    <div class="module-container">
+      <h1>Send</h1>
+      <div class="home-send">
+        <form method="POST" class="home-form">
+          <p>Input your command:</p>
+          <input class="home-input" type="text" name="command" placeholder=" e.g turn on light">
+          <input type="submit" class="home-button">
+        </form>
+      </div>
     </div>
-    <h1>Sensors</h1>
-    <div class="home-sensors">
-      <div class="home-sensor-container first-element">
-          <img src="{{url_for('static', filename='img/temperature.svg')}}">
-          {% if temperature %}
-            <p>{{temperature}}</p>
-          {%else%}
-            <p>Temperature: Not found.</p>
-          {% endif %}
-      </div>     
-      <div class="home-sensor-container">
-          <img src="{{url_for('static', filename='img/humidity.svg')}}">
-          {% if humidity%}
-            <p>{{humidity}}</p>
-          {%else%}
-          <p>Humidity: Not found. </p>
-          {% endif %}
-      </div>     
+    <div class="module-container">
+      <h1>Sensors</h1>
+      <div class="home-sensors">
+        <div class="home-sensor-container first-element">
+            <img src="{{url_for('static', filename='img/temperature.svg')}}">
+            {% if temperature %}
+              <p>{{temperature}}</p>
+            {%else%}
+              <p>Temperature: Not found.</p>
+            {% endif %}
+        </div>     
+        <div class="home-sensor-container">
+            <img src="{{url_for('static', filename='img/humidity.svg')}}">
+            {% if humidity%}
+              <p>{{humidity}}</p>
+            {%else%}
+            <p>Humidity: Not found. </p>
+            {% endif %}
+        </div>     
+      </div>
     </div>
   </div>
   <div class="content-container">
