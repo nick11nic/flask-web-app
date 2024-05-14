@@ -7,6 +7,7 @@ Sensor Page
 {% block content%}
 <h1>Sensor Register</h1>
 
+{% if session.get('username') == "adm" %}
 <h2>New Sensor</h2>
 <form action="/create_sensor" method="post">
     <label for="name">Name:</label>
@@ -17,6 +18,7 @@ Sensor Page
     
     <button type="submit">Register</button>
 </form>
+{% endif %}
 
 <h2>Registered Sensors</h2>
 <table>
@@ -29,9 +31,11 @@ Sensor Page
         <td>{{ sensor.name }}</td>
         <td>{{ sensor.value }}</td>
         <td>
+            {% if session.get('username') == "adm" %}
             <form action="/delete_sensor/{{sensor.id}}" method="POST">
                 <button type="submit">Delete</button>
             </form>
+            {% endif %}
         </td>
     </tr>
     {% endfor %}

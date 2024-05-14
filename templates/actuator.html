@@ -7,6 +7,7 @@ Actuator Page
 {% block content%}
 <h1>Actuator Register</h1>
 
+{% if session.get('username') == "adm" %}
 <h2>New Actuator</h2>
 <form action="/create_actuator" method="post">
     <label for="name">Name:</label>
@@ -17,6 +18,7 @@ Actuator Page
     
     <button type="submit">Register</button>
 </form>
+{% endif %}
 
 <h2>Registered Actuators</h2>
 <table>
@@ -29,9 +31,11 @@ Actuator Page
         <td>{{ actuator.name }}</td>
         <td>{{ actuator.value }}</td>
         <td>
+            {% if session.get('username') == "adm" %}
             <form action="/delete_actuator/{{actuator.id}}" method="POST">
                 <button type="submit">Delete</button>
             </form>
+            {% endif %}
         </td>
     </tr>
     {% endfor %}
