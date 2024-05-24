@@ -1,10 +1,16 @@
+import os
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from source.models import db
 from blueprints import login, home, actuator, sensor, logout, user
 
-def create_app():
-    app = Flask(__name__, template_folder="../templates", static_folder="../static")
+def main():
+    app = Flask(__name__)
     app.secret_key = "ndisanpsaiviwb2983123"
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(app.root_path, 'database.db')
+    db.init_app(app)
+
+    with app.app_context():
+        db.create_all()
 
     app.register_blueprint(login.login, url_prefix="")
     app.register_blueprint(home.home, url_prefix="")
@@ -13,4 +19,8 @@ def create_app():
     app.register_blueprint(logout.logout, url_prefix="")
     app.register_blueprint(user.user, url_prefix="")
 
-    return app
+    app.run(port=8080, debug=True)
+
+
+if __name__ == "__main__":
+    main()
