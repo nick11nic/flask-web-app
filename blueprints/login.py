@@ -5,6 +5,10 @@ login = Blueprint(
     "login", __name__, static_folder="static", template_folder="templates"
 )
 
+logout = Blueprint(
+    "logout", __name__, static_folder="static", template_folder="templates"
+)
+
 @login.route("/login", methods=["GET", "POST"])
 def login_blueprint():
     if request.method == "GET":
@@ -21,3 +25,8 @@ def login_blueprint():
             return redirect("/home")
 
     return render_template("login.html", error="Error: Invalid credentials.")
+
+@logout.route("/logout")
+def logout_blueprint():
+    session.clear()
+    return redirect("/")
