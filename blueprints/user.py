@@ -4,15 +4,10 @@ from werkzeug.security import generate_password_hash
 
 user = Blueprint("user", __name__, static_folder="static", template_folder="templates")
 
-users = [
-    {"id": 1, "email": "user@gmail.com", "password": "123"},
-    {"id": 2, "email": "adm@gmail.com", "password": "123"}
-]
-
 @user.route("/user")
 def user_blueprint():
     if session.get("username") == "adm":
-        return render_template("user.html", users=users)
+        return render_template("user.html", users=read_users())
     return redirect("/home")
 
 @user.route("/create_user", methods=["POST"])
@@ -25,6 +20,11 @@ def create_user():
      db.session.add(new_user)
      db.session.commit()
      return redirect("/user")
+
+@user.route("/read_users")
+def read_users():
+    users = User.query.all()
+    return users
 
 @user.route("/edit_user", methods=["POST"])
 def edit_user():

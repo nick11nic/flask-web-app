@@ -1,8 +1,7 @@
 import os
 from flask import Flask
-from source.models import db, User
+from source.models import db
 from blueprints import login, home, actuator, sensor, user
-from werkzeug.security import generate_password_hash
 
 def main():
     app = Flask(__name__)
@@ -13,12 +12,12 @@ def main():
     with app.app_context():
         db.create_all()
 
-    app.register_blueprint(login.login, url_prefix="")
-    app.register_blueprint(login.logout, url_prefix="")
-    app.register_blueprint(home.home, url_prefix="")
-    app.register_blueprint(actuator.actuator, url_prefix="")
-    app.register_blueprint(sensor.sensor, url_prefix="")
-    app.register_blueprint(user.user, url_prefix="")
+        app.register_blueprint(login.login, url_prefix="")
+        app.register_blueprint(login.logout, url_prefix="")
+        app.register_blueprint(home.home, url_prefix="")
+        app.register_blueprint(actuator.actuator, url_prefix="")
+        app.register_blueprint(sensor.sensor, url_prefix="")
+        app.register_blueprint(user.user, url_prefix="")
 
     app.run(port=8080, debug=True)
 

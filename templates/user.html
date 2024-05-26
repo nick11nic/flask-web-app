@@ -54,23 +54,23 @@ User Page
     <div class="user-list-container">
         <h2 class="user-list">User List</h2>
         <div class="view-user-container">
-        <table>
-            <tr>
-                <th class="user-id">User ID</th>
-                <th class="user-email">Email</th>
-                <th class="user-action">Action</th>
-            </tr>
-            {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.email }}</td>
+            <table>
+                <tr>
+                    <th class="user-id">User ID</th>
+                    <th class="user-email">Email</th>
+                    <th class="user-action">Action</th>
+                </tr>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.email }}</td>
                 <td>
                     <form action="/delete_user/{{user.id}}" method="POST">
-                        <button type="submit">Delete</button>
+                    <button type="submit">Delete</button>
                     </form>
                 </td>
-            </tr>
-            {% endfor %}
+                </tr>
+                {% endfor %}
         </table>
     </div>
     </div>
