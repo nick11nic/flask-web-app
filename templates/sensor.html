@@ -6,7 +6,7 @@ Sensor Page
 
 {% block content%}
 <div class="main">
-    {% if session.get('username') == "adm" %}
+    {% if session.get('role') == "admin" %}
     <div class="container">
         <h2 class="sensor-subtitle">New Sensor</h2>
         <form action="/create_sensor" method="post" class="sensor-create-container">
@@ -34,7 +34,7 @@ Sensor Page
                     <td class="sensor-table-data left">{{ sensor.name }}</td>
                     <td class="sensor-table-data">{{ sensor.value }}</td>
                     <td class="sensor-table-data">
-                        {% if session.get('username') == "adm" %}
+                        {% if session.get('role') == "admin" %}
                         <form action="/delete_sensor/{{sensor.id}}" method="POST">
                             <button type="submit" class="sensor-delete-button">Delete</button>
                         </form>

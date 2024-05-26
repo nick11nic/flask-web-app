@@ -42,7 +42,7 @@
             </a>
             <a class="base-menu-option-logged">
               <img src="{{url_for('static', filename='img/login.svg')}}">
-              <p>{{ session.get('username') }}</p>
+              <p>{{ session.get('user') }}</p>
             </a>
           {%else%}
             <a href="/login" class="base-menu-option">

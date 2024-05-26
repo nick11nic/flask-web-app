@@ -6,7 +6,7 @@ user = Blueprint("user", __name__, static_folder="static", template_folder="temp
 
 @user.route("/user")
 def user_blueprint():
-    if session.get("username") == "adm":
+    if session.get("role") == "admin":
         return render_template("user.html", users=read_users())
     return redirect("/home")
 
@@ -42,7 +42,7 @@ def edit_user():
             user.password = hashed_password
         db.session.commit()
     else:
-        flash("User not found.")
+        flash("User not found.", "warning")
 
     return redirect("/user")
 
@@ -51,6 +51,9 @@ def edit_user():
 def delete_user(user_id):
     user = User.query.filter_by(id=user_id).first()
     if user:
-        db.session.delete(user)
-        db.session.commit()
+        if user.username != "adm":
+            db.session.delete(user)
+            db.session.commit()
+        else:
+            flash("Cannot delete admin.", "error")
     return redirect("/user")

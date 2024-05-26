@@ -6,7 +6,7 @@ Actuator Page
 
 {% block content%}
 <div class="main">
-    {% if session.get('username') == "adm" %}
+    {% if session.get('role') == "admin" %}
     <div class="container">
         <h2 class="actuator-subtitle">New Actuator</h2>
         <form action="/create_actuator" method="post" class="actuator-create-container">
@@ -34,7 +34,7 @@ Actuator Page
                     <td class="actuator-table-data" class="left">{{ actuator.name }}</td>
                     <td class="actuator-table-data">{{ actuator.value }}</td>
                     <td class="actuator-table-data">
-                        {% if session.get('username') == "adm" %}
+                        {% if session.get('role') == "admin" %}
                         <form action="/delete_actuator/{{actuator.id}}" method="POST">
                             <button type="submit" class="actuator-delete-button">Delete</button>
                         </form>
