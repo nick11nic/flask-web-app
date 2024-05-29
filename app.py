@@ -2,7 +2,7 @@ import os
 from flask import Flask
 from flask_migrate import Migrate
 from source.models import db
-from blueprints import login, home, actuator, sensor, user
+from blueprints import login, home, actuator, sensor, user, log
 
 
 app = Flask(__name__)
@@ -20,5 +20,6 @@ with app.app_context():
     app.register_blueprint(actuator.actuator, url_prefix="")
     app.register_blueprint(sensor.sensor, url_prefix="")
     app.register_blueprint(user.user, url_prefix="")
+    app.register_blueprint(log.log, url_prefix="")
 
 app.run(port=8080, debug=True)

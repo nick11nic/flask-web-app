@@ -1,0 +1,12 @@
+- Histórico completo
+    - Armazenamento de dados sensores/atuadores
+    - Seleção de períodos
+
+- Roles
+    - Integração de Operator e Statistician
+    - Permissões
+- CRUD kits
+    - Update kits
+- Frontend
+    - Responsividade
+    - rework visual

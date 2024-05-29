@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, redirect, request, session
+from blueprints.user import is_admin
 from source.models import db, Sensor
 
 sensor = Blueprint("sensor", __name__, static_folder="static", template_folder="templates")
@@ -12,6 +13,9 @@ def sensor_blueprint():
 
 @sensor.route("/create_sensor", methods=["POST"])
 def create_sensor():
+    if not is_admin():
+        session.clear()
+        return redirect("/home")
     name = request.form.get("name")
     type = request.form.get("type")
     value = request.form.get("value")
@@ -28,6 +32,9 @@ def read_sensors():
 
 @sensor.route("/delete_sensor/<int:sensor_id>", methods=["POST"])
 def delete_sensor(sensor_id):
+    if not is_admin():
+        session.clear()
+        return redirect("/home")
     sensor = Sensor.query.filter_by(id=sensor_id).first()
     if sensor:
         db.session.delete(sensor)

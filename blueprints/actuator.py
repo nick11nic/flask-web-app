@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, redirect, request, session
+from blueprints.user import is_admin
 from source.models import db, Actuator
 
 actuator = Blueprint("actuator", __name__, static_folder="static", template_folder="templates")
@@ -12,6 +13,9 @@ def actuator_blueprint():
 
 @actuator.route("/create_actuator", methods=["POST"])
 def create_actuator():
+    if not is_admin():
+        session.clear()
+        return redirect("/home")
     name = request.form.get("name")
     type = request.form.get("type")
     value = request.form.get("value")
@@ -29,6 +33,9 @@ def read_actuators():
 
 @actuator.route("/delete_actuator/<int:actuator_id>", methods=["POST"])
 def delete_actuator(actuator_id):
+    if not is_admin():
+        session.clear()
+        return redirect("/home")
     actuator = Actuator.query.filter_by(id=actuator_id).first()
     if actuator:
         db.session.delete(actuator)

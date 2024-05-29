@@ -13,10 +13,6 @@ Actuator Page
             <label for="name" class="actuator-label">Name:</label>
             <input type="text" id="name" name="name" placeholder="e.g temperature" required class="actuator-input"><br>
 
-            <label for="type" class="actuator-label">Type:</label>
-            <select id="type" name="type" class="actuator-input">
-                <option value="led">led</option>
-    
             <label for="value" class="actuator-label">Value:</label>
             <input type="number" id="value" name="value" placeholder="25" required class="actuator-input"><br>
             
@@ -30,14 +26,12 @@ Actuator Page
             <table class="actuator-table">
                 <tr>
                     <th class="actuator-table-header left">Name</th>
-                    <th class="actuator-table-header">Type</th>
                     <th class="actuator-table-header">Value</th>
                     <th class="actuator-table-header">Action</th>
                 </tr>
                 {% for actuator in actuators %}
                 <tr>
                     <td class="actuator-table-data" class="left">{{ actuator.name }}</td>
-                    <td class="actuator-table-data">{{ actuator.type }}</td>
                     <td class="actuator-table-data">{{ actuator.value }}</td>
                     <td class="actuator-table-data">
                         {% if session.get('role') == "admin" %}
