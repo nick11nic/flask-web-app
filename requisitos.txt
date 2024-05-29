@@ -9,6 +9,7 @@
     - Update kits
 - Frontend
     - Nova home
-    - novo cmd e nova view de dados em tempo real
+    - mudar location cmd e view de dados em tempo real
     - Responsividade
     - rework visual
+    - atualização da view em tempo real
