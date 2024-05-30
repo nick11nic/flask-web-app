@@ -7,6 +7,8 @@
     - Permissões
 - CRUD kits
     - Update kits
+-log CRUD
+    - criar def para crud log
 - Frontend
     - Nova home
     - mudar location cmd e view de dados em tempo real
