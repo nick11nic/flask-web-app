@@ -1,7 +1,8 @@
 from flask import Flask, Blueprint, render_template, session, redirect, request, Response, jsonify
 import paho.mqtt.client as mqtt
 import threading
-import json
+from datetime import date
+from source.models import db, Log
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
@@ -20,10 +21,24 @@ def on_message(client, userdata, message):
         if old_temperature != payload:
             values["Temperature"] = payload
             messages.insert(0, payload)
+
+            temp = int(payload.split(":")[1])
+            if temp > 50:
+                log = Log(name = "Temperature", value = temp, timestamp = date.today())
+                db.session.add(log)
+                db.session.commit()
+
+
     elif "Humidity" in payload:
         if old_humidity != payload: 
             values["Humidity"] = payload
             messages.insert(0, payload)
+
+            humidity = int(payload.split(":")[1])
+            if humidity > 50:
+                log = Log(name = "Humidity", value = humidity, timestamp = date.today())
+                db.session.add(log)
+                db.session.commit()
 
 client = mqtt.Client()
 client.on_message = on_message
