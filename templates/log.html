@@ -25,7 +25,7 @@ Home Page
             <div class="sensor-data-row">
                 {% for data in sensor_data %}
                     <div class="sensor-data-card">
-                        <h5>{{ data.sensor }}</h5>
+                        <h5>{{ data.name }}</h5>
                         <p>Value: {{ data.value }}</p>
                         <p>Timestamp: {{ data.timestamp }}</p>
                     </div>

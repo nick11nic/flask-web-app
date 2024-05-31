@@ -4,9 +4,14 @@ from werkzeug.security import generate_password_hash
 
 user = Blueprint("user", __name__, static_folder="static", template_folder="templates")
 
-is_admin = lambda: session.get("role") == "admin"
-is_operator = lambda: session.get("role") == "operator"
-is_statistician = lambda: session.get("role") == "statistician"
+def is_admin():
+    return session.get("role") == "admin"
+
+def is_operator():
+    return session.get("role") == "operator"
+
+def is_statistician():
+    return session.get("role") == "statistician"
 
 @user.route("/user")
 def user_blueprint():
@@ -20,7 +25,9 @@ def create_user():
      password = request.form.get("password")
      hashed_password = generate_password_hash(password, method="pbkdf2:sha256")
      user = email.split("@")[0]
-     new_user = User(username=user, email=email, password=hashed_password, role="user")
+     role = request.form.get("role")
+
+     new_user = User(username=user, email=email, password=hashed_password, role=role)
      db.session.add(new_user)
      db.session.commit()
      return redirect("/user")

@@ -2,9 +2,6 @@
     - Armazenamento de dados sensores/atuadores
     - Seleção de períodos
 
-- Roles
-    - Integração de Operator e Statistician
-    - Permissões
 - CRUD kits
     - Update kits
 -log CRUD

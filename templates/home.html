@@ -6,6 +6,7 @@ Home Page
 <div class="home-container">
   <div class="content-container">
     <div class="module-container">
+      {% if is_admin or is_operator %}
       <h1>Send</h1>
       <div class="home-send">
         <form method="POST" class="home-form">
@@ -14,8 +15,10 @@ Home Page
           <input type="submit" class="home-button">
         </form>
       </div>
+      {% endif %}
     </div>
     <div class="module-container">
+      {% if is_admin or is_statistician%}
       <h1>Sensors</h1>
       <div class="home-sensors">
         <div class="home-sensor-container first-element">
@@ -27,9 +30,11 @@ Home Page
             <p id="humidity">{{ values.Humidity or 'Humidity: Not found.' }}</p>
         </div>     
       </div>
+      {% endif %}
     </div>
   </div>
   <div class="content-container">
+    {% if is_admin or is_statistician %}
     <h1>Receive</h1>
     <div class="home-receive" id="messages">
       {% for message in messages %}
@@ -38,6 +43,7 @@ Home Page
       </div>
       {% endfor %}
     </div>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

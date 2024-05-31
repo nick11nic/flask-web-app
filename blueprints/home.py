@@ -2,6 +2,7 @@ from flask import Flask, Blueprint, render_template, session, redirect, request,
 import paho.mqtt.client as mqtt
 import threading
 from datetime import date
+from blueprints.user import is_admin, is_statistician, is_operator
 from source.models import db, Log
 
 app = Flask(__name__)
@@ -57,7 +58,7 @@ def home_blueprint():
     if "user" not in session:
         return redirect("/login")
 
-    return render_template("home.html", values = values, messages=messages)
+    return render_template("home.html", values = values, messages=messages, is_admin=is_admin(), is_statistician=is_statistician(), is_operator=is_operator())
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
