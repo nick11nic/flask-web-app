@@ -1,11 +1,12 @@
 {% extends "base.html" %}
-{% block title%}
+{% block title %}
 Home Page
 {% endblock %}
-{% block content%}
+{% block content %}
 <div class="home-container">
   <div class="content-container">
     <div class="module-container">
+      {% if is_admin or is_operator %}
       <h1>Send</h1>
       <div class="home-send">
         <form method="POST" class="home-form">
@@ -14,38 +15,35 @@ Home Page
           <input type="submit" class="home-button">
         </form>
       </div>
+      {% endif %}
     </div>
     <div class="module-container">
+      {% if is_admin or is_statistician%}
       <h1>Sensors</h1>
       <div class="home-sensors">
         <div class="home-sensor-container first-element">
             <img src="{{url_for('static', filename='img/temperature.svg')}}">
-            {% if temperature %}
-              <p>{{temperature}}</p>
-            {%else%}
-              <p>Temperature: Not found.</p>
-            {% endif %}
+            <p id="temperature">{{ values.Temperature or 'Temperature: Not found.' }}</p>
         </div>     
         <div class="home-sensor-container">
             <img src="{{url_for('static', filename='img/humidity.svg')}}">
-            {% if humidity%}
-              <p>{{humidity}}</p>
-            {%else%}
-            <p>Humidity: Not found. </p>
-            {% endif %}
+            <p id="humidity">{{ values.Humidity or 'Humidity: Not found.' }}</p>
         </div>     
       </div>
+      {% endif %}
     </div>
   </div>
   <div class="content-container">
+    {% if is_admin or is_statistician %}
     <h1>Receive</h1>
-      <div class="home-receive">
-        {% for message in messages %}
-          <div class="home-receive-message">
-            <p>{{message}}</p>
-          </div>
-        {% endfor %}
+    <div class="home-receive" id="messages">
+      {% for message in messages %}
+      <div class="home-receive-message">
+        <p>{{message}}</p>
       </div>
+      {% endfor %}
+    </div>
+    {% endif %}
   </div>
 </div>
-{% endblock%}
+{% endblock %}

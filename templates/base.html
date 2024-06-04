@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/sensor.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/actuator.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/log.css') }}">
     <title>{%block title%}{%endblock%}</title>
   </head>
   <body>
@@ -27,7 +28,11 @@
             <img src="{{url_for('static', filename='img/actuator.svg')}}">
             <p>Actuators</p>
         </a>
-        {% if session.get('username') == 'adm' %}
+        <a href="/log" class="base-menu-option">
+            <img src="{{url_for('static', filename='img/sensor.svg')}}">
+            <p>Logs</p>
+        </a>
+        {% if session.get('role') == 'admin' %}
         <a href="/user" class="base-menu-option">
             <img src="{{url_for('static', filename='img/user.svg')}}">
             <p>Users</p>
@@ -42,7 +47,7 @@
             </a>
             <a class="base-menu-option-logged">
               <img src="{{url_for('static', filename='img/login.svg')}}">
-              <p>{{ session.get('username') }}</p>
+              <p>{{ session.get('user') }}</p>
             </a>
           {%else%}
             <a href="/login" class="base-menu-option">
