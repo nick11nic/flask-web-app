@@ -1,14 +1,3 @@
-- Histórico completo
-    - Armazenamento de dados sensores/atuadores
-    - Seleção de períodos
-
-- CRUD kits
-    - Update kits
--log CRUD
-    - criar def para crud log
-- Frontend
-    - Nova home
-    - mudar location cmd e view de dados em tempo real
-    - Responsividade
-    - rework visual
-    - atualização da view em tempo real
+- Mais modelos (1 pra cada sensor/atuador)
+    -implementar modelos 
+- Implementar novo sensor

@@ -1,13 +1,13 @@
 from flask import Blueprint, render_template, request, redirect, session, flash
 from werkzeug.security import check_password_hash
-from source.models import db, User
+from model.models import db, User
 
 login = Blueprint(
-    "login", __name__, static_folder="static", template_folder="templates"
+    "login", __name__, static_folder="static", template_folder="view"
 )
 
 logout = Blueprint(
-    "logout", __name__, static_folder="static", template_folder="templates"
+    "logout", __name__, static_folder="static", template_folder="view"
 )
 
 users = []

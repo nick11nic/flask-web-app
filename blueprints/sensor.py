@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, redirect, request, session
 from blueprints.user import is_admin
-from source.models import db, Sensor
+from model.models import db, Sensor
 
-sensor = Blueprint("sensor", __name__, static_folder="static", template_folder="templates")
+sensor = Blueprint("sensor", __name__, static_folder="static", template_folder="view")
 
 @sensor.route("/sensor")
 def sensor_blueprint():

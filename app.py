@@ -1,11 +1,11 @@
 import os
 from flask import Flask
 from flask_migrate import Migrate
-from source.models import db
-from blueprints import login, home, actuator, sensor, user, log
+from model.models import db
+from blueprints import login, actuator, sensor, user, log, home
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="view")
 app.secret_key = "ndisanpsaiviwb2983123"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(app.root_path, 'database.db')
 db.init_app(app)
@@ -21,5 +21,4 @@ with app.app_context():
     app.register_blueprint(sensor.sensor, url_prefix="")
     app.register_blueprint(user.user, url_prefix="")
     app.register_blueprint(log.log, url_prefix="")
-
 app.run(port=8080, debug=True)
