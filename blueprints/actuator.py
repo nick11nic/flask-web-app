@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, redirect, request, session
 from blueprints.user import is_admin
-from source.models import db, Actuator
+from model.models import db, Actuator
 
-actuator = Blueprint("actuator", __name__, static_folder="static", template_folder="templates")
+actuator = Blueprint("actuator", __name__, static_folder="static", template_folder="view")
 
 @actuator.route("/actuator")
 def actuator_blueprint():

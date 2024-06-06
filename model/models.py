@@ -19,8 +19,18 @@ class Actuator(db.Model):
     name = db.Column(db.String(80), unique=True, nullable=False)
     value = db.Column(db.Integer, nullable=False)
 
-class Log(db.Model):
+class LogTemperature(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    value = db.Column(db.Float, nullable=False)
+    timestamp = db.Column(db.Date, nullable=False)
+
+class LogHumidity(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    value = db.Column(db.Float, nullable=False)
+    timestamp = db.Column(db.Date, nullable=False)
+
+class LogActuator(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
-    value = db.Column(db.Integer, nullable=False)
+    is_active = db.Column(db.Boolean, nullable=False)
     timestamp = db.Column(db.Date, nullable=False)

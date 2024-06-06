@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, session, redirect, request, flash
-from source.models import db, User
+from model.models import db, User
 from werkzeug.security import generate_password_hash
 
-user = Blueprint("user", __name__, static_folder="static", template_folder="templates")
+user = Blueprint("user", __name__, static_folder="static", template_folder="view")
 
 def is_admin():
     return session.get("role") == "admin"
